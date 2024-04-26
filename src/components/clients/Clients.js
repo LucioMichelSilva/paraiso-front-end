@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faEye } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Clients = () => {
@@ -27,26 +28,26 @@ const Clients = () => {
   };
 
   const handleCreate = () => {
-    navigate('/clients/new'); // Redireciona para a página de criação de serviços
+    navigate('/clients/new'); 
   };
 
   return (
     <div>
-      <h2>Serviços</h2>
-      <ul className="list-group">
+      <h2 style={{fontFamily:'sans-serif'}}>Clientes</h2>
+      <ul className="list-group" style={{marginLeft:'5%', width:'90%'}}>
         {clients.map(client => (
           <li key={client.id} className="list-group-item d-flex justify-content-between align-items-center">
             <div>
-              <strong>{client.name}</strong>
+              <strong style={{fontFamily:'sans-serif'}}>{client.name}</strong>
               <p>{client.email}</p>
-              <Link to={`/clients/${client.id}/photos`}>Ver Fotos</Link>
+              <Link to={`/clients/${client.id}/photos`} style={{color:'green'}}>Ver Fotos</Link>
             </div>
             <div>
-              <button className="btn btn-primary me-2" onClick={() => handleEdit(clients)}>
+              <button className="btn btn-primary me-2" style={{backgroundColor:'green', borderColor:'green' }} onClick={() => handleEdit(clients)}>
                 <FontAwesomeIcon icon={faEdit} />
               </button>
-              <button className="btn btn-primary me-2" onClick={() => handleCreate(clients)}>
-                <FontAwesomeIcon icon={faEye} />
+              <button className="btn btn-primary me-2" style={{backgroundColor:'green', borderColor:'green' }} onClick={() => handleCreate(clients)}>
+                <FontAwesomeIcon icon={faPlus}  />
               </button>
               {/* Adicione outros botões ou ações aqui, se necessário */}
             </div>

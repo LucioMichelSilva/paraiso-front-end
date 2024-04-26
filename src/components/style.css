@@ -1,0 +1,104 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+ /* background-image: url('C:\Users\Michel\Downloads\backgroud.jpg')
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;*/
+  }
+  .leaf-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: green; 
+    font-size: 80px; 
+  }
+  .leaf-icon-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+   
+  }
+  .container2{
+    
+    width: 350px;
+    padding: 27px;
+    border-radius: 8px;
+    background-color: #5ad25a;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+ .lblParaiso{
+  margin-top: 25%;
+  font-family: sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+ }
+  .form-container {
+    width: 400px;
+   
+    padding: 27px;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-family: sans-serif;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 13px;
+    border: 1px solid #cccccc;
+  }
+  
+  .form-group button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #228B22;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: sans-serif;
+  }
+  
+  .form-group button:hover {
+    background-color: #6db16b;
+  }
+  .loginLBL{
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+    color: #228B22;
+  }
+  .lblAvicos{
+    font-size: 12px;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+    color: #228B22;
+  }
+  .error-message{
+    font-size: 12px;
+    color:red;
+    font-family: sans-serif;
+  }
+
+  
