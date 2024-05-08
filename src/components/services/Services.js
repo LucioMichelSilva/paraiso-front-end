@@ -52,6 +52,14 @@ const Button = styled.button`
 }
 `;
 
+const RightAlignedDiv = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-right: 5%;
+`;
+
 const Services = () => {
   const [services, setServices] = useState([]);
   const navigate = useNavigate();
@@ -89,6 +97,12 @@ const Services = () => {
   return (
     <div>
       <Heading>Serviços</Heading>
+        < RightAlignedDiv>
+              <Button className="btn   me-2" onClick={() => handleCreate(services)}>
+                 <FontAwesomeIcon icon={faPlus} />
+              </Button>
+        </RightAlignedDiv>
+
       <List>
         {services.map(service => (
           <ListItem key={service.id}>
@@ -99,9 +113,6 @@ const Services = () => {
             <div>
               <Button className="btn  me-2" onClick={() => handleEdit(service)}>
                 <FontAwesomeIcon icon={faEdit}  />
-              </Button>
-              <Button className="btn   me-2" onClick={() => handleCreate(service)}>
-                <FontAwesomeIcon icon={faPlus} />
               </Button>
               {/* Adicione outros botões ou ações aqui, se necessário */}
             </div>
