@@ -101,4 +101,14 @@
     font-family: sans-serif;
   }
 
+  .sidebar-link {
+    color: black;
+    font-weight: bold;
+    font-family: sans-serif;
+    transition: color 0.3s; /* Adiciona uma transição suave para a mudança de cor */
+  }
+  
+  .sidebar-link:hover {
+    color: blue; /* Altera a cor do texto quando o mouse passa por cima */
+  }
   

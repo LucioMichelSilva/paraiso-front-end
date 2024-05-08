@@ -1,4 +1,3 @@
-// Services.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,6 +5,52 @@ import { faEdit, faEye } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+
+// Estilos usando Styled Components
+const Heading = styled.h2`
+  font-family: sans-serif;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+  color: green;
+`;
+
+const List = styled.ul`
+  margin-left: 5%;
+  width: 90%;
+`;
+
+const ListItem = styled.li`
+  & {
+    list-style-type: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+  }
+
+  &:hover {
+    background-color: #f1f1f1;
+  }
+`;
+
+const Button = styled.button`
+&{
+  background-color: green;
+  border-color: green;
+  margin-right: 5px;
+  color:#fff
+}
+&:hover {
+  background-color:  #6db16b;
+  border-color:  #6db16b;
+  color:#fff
+}
+`;
 
 const Services = () => {
   const [services, setServices] = useState([]);
@@ -43,29 +88,26 @@ const Services = () => {
 
   return (
     <div>
-      <h2 style={{fontFamily:'sans-serif',}}>Serviços</h2>
-      <ul className="list-group" style={{marginLeft:'5%', width:'90%'}}>
+      <Heading>Serviços</Heading>
+      <List>
         {services.map(service => (
-          <li key={service.id} className="list-group-item d-flex justify-content-between align-items-center">
+          <ListItem key={service.id}>
             <div>
-              <strong  style={{fontFamily:'sans-serif'}}>{service.name}</strong>
-              <p  style={{color:'green'}}>{service.description}</p>
+              <strong>{service.name}</strong>
+              <p style={{color:'#006400',fontFamily:'sans-serif'}}>{service.description}</p>
             </div>
             <div>
-              <button className="btn btn-primary me-2" style={{backgroundColor:'green', borderColor:'green' }} onClick={() => handleEdit(service)}>
-                <FontAwesomeIcon icon={faEdit} />
-              </button>
-              <button className="btn btn-primary me-2" style={{backgroundColor:'green', borderColor:'green' }} onClick={() => handleCreate(service)}>
-                <FontAwesomeIcon icon={faPlus}  />
-              </button>
-              <button className="btn btn-primary me-2" style={{backgroundColor:'red', borderColor:'red' }}  onClick={() => handleDelete(service)}>
-                <FontAwesomeIcon icon={faTrashAlt}  />
-              </button>
+              <Button className="btn  me-2" onClick={() => handleEdit(service)}>
+                <FontAwesomeIcon icon={faEdit}  />
+              </Button>
+              <Button className="btn   me-2" onClick={() => handleCreate(service)}>
+                <FontAwesomeIcon icon={faPlus} />
+              </Button>
               {/* Adicione outros botões ou ações aqui, se necessário */}
             </div>
-          </li>
+          </ListItem>
         ))}
-      </ul>
+      </List>
     </div>
   );
 };

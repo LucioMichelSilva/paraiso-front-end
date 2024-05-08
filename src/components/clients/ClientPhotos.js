@@ -4,11 +4,10 @@ import axios from 'axios';
 
 const ClientPhotos = () => {
   const [photoGroups, setPhotoGroups] = useState([]);
-  const { clientId } = useParams();
-  const { serviceId } = useParams();
+  const {clientId} = useParams();
 
   useEffect(() => {
-    if (clientId) fetchPhotos(clientId); // Assegura que clientId está disponível
+    if (clientId) fetchPhotos(clientId); 
   }, [clientId]);
 
   const fetchPhotos = async (clientId) => {
@@ -18,11 +17,11 @@ const ClientPhotos = () => {
         ...group,
         photos: group.photos.map(photo => ({
           ...photo,
-          photoURL: `data:image/jpeg;base64,${photo.photoBuffer}` // Assume que as fotos são em formato jpeg
+          photoURL: `data:image/jpeg;base64,${photo.photoBuffer}`
         }))
       }));
 
-      // Agrupar por serviceId e createdAt
+  // Agrupar por serviceId e createdAt
       const groupedByServiceAndDate = {};
       groups.forEach(group => {
         const key = `${group.serviceId}_${group.createdAt}`;
@@ -30,6 +29,7 @@ const ClientPhotos = () => {
           groupedByServiceAndDate[key] = {
             serviceId: group.serviceId,
             createdAt: group.createdAt,
+            serviceName: group.serviceName,
             photos: []
           };
         }
@@ -47,9 +47,9 @@ const ClientPhotos = () => {
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {photoGroups.map(group => (
           <div key={`${group.serviceId}_${group.createdAt}`} className="col">
-            <div className="card">
-              <div className="card-header">
-                <h5 className="card-title text-center">{group.serviceId} - {group.createdAt}</h5>
+            <div className="card" >
+              <div className="card-header" style={{backgroundColor:'#cbe9cb'}}>
+                <h5 className="card-title text-center">{group.serviceName} - {group.createdAt}</h5>
               </div>
               <div className="card-body">
                 <div className="row row-cols-1 row-cols-md-3 g-3">

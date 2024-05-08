@@ -31,7 +31,7 @@ const Login = ({ setToken }) => {
   return (
     <div className="container">
         <div className="container2">
-          <h1 className='lblParaiso'>Paraisso Jardinagem</h1>
+          <h1 className='lblParaiso'>Paraiso Jardinagem</h1>
           <div className="leaf-icon-container">
           <FontAwesomeIcon icon={faLeaf} className='leaf-icon'/>
           </div>
@@ -39,24 +39,24 @@ const Login = ({ setToken }) => {
      <div className="form-container">
       <h2 className='loginLBL'>Login</h2>
       <form onSubmit={handleSubmit}>
-      {error && <div className="error-message">{error}</div>}
-        <div className="form-group">
-          <label htmlFor="username">Usuário:</label>
-          <input className='form-group input' type="text" placeholder="Usuário" value={username} onChange={(e) => setUsername(e.target.value)} />
-        </div>
+        {error && <div className="error-message">{error}</div>}
+          <div className="form-group">
+            <label htmlFor="username">Usuário:</label>
+            <input className='form-group input' type="text" placeholder="Usuário" value={username} onChange={(e) => setUsername(e.target.value)} />
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="password">Senha:</label>
-           <input className='form-group input' type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </div>
+          <div className="form-group">
+            <label htmlFor="password">Senha:</label>
+            <input className='form-group input' type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} />
+          </div>
 
-        <div className="form-group">
-            <button type="submit">Entrar</button>
-        </div>
+          <div className="form-group">
+              <button type="submit">Entrar</button>
+          </div>
 
-        <div className='form-group'>
-          <label className='lblAvicos'>Faça o login e acesse os serviços</label>
-        </div>
+          <div className='form-group'>
+            <label className='lblAvicos'>Faça o login e acesse os serviços</label>
+          </div>
       </form>
       </div>
     </div>
