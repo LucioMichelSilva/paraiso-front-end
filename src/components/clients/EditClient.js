@@ -10,6 +10,7 @@ const Heading = styled.h2`
   margin-top: 10px;
   font-weight: bold;
   color: green;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 `;
 
 const FormContainer = styled.div`
@@ -36,15 +37,13 @@ const SubmitButton = styled.button`
     background-color: green;
     border-color: green;
     color:#fff;
-    MARGIN-RIGHT: 10PX;
+    margin-right: 10px;
   }
   &:hover {
     background-color:  #6db16b;
     border-color:  #6db16b;
     color:#fff;
   }
-  
- 
 `;
 
 const EditClient = () => {
@@ -52,7 +51,7 @@ const EditClient = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
-    email: '' 
+    email: ''
   });
 
   const [error, setError] = useState('');
@@ -65,16 +64,26 @@ const EditClient = () => {
   }, [location]);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [e.target.name]: e.target.value
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!formData.name || !formData.email) {
       setError('Por favor, preencha todos os campos.');
       return;
     }
+
+    // Verificar se o email é válido
+    if (!isValidEmail(formData.email)) {
+      setError('Por favor, insira um email válido.');
+      return;
+    }
+
     try {
       const { name, email } = formData;
       const clientId = location.state.client.id;
@@ -85,23 +94,25 @@ const EditClient = () => {
     }
   };
 
+  const isValidEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
   return (
     <div>
       <Heading>Editar Cliente</Heading>
       <FormContainer>
         <Form onSubmit={handleSubmit}>
-        {error && <div style={{ color: 'red' }}>{error}</div>}
+          {error && <div style={{ color: 'red' }}>{error}</div>}
           <div className="mb-3">
             <FormLabel htmlFor="name">Nome:</FormLabel>
             <input type="text" className="form-control" id="name" name="name" value={formData.name} onChange={handleChange} />
           </div>
           <div className="mb-3">
-            <FormLabel htmlFor="email">Email:</FormLabel> 
-            <input type="text" className="form-control" id="email" name="email" value={formData.email} onChange={handleChange} /> 
+            <FormLabel htmlFor="email">Email:</FormLabel>
+            <input type="text" className="form-control" id="email" name="email" value={formData.email} onChange={handleChange} />
           </div>
           <SubmitButton type="submit" className="btn">Salvar</SubmitButton>
-
-          {/*<SubmitButton type="submit" className="btn" style={{background:'red', borderColor:'red'}}>Desabilitar cliente</SubmitButton>*/}
         </Form>
       </FormContainer>
     </div>

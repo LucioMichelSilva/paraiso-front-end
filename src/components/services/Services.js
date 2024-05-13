@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faEye } from '@fortawesome/free-solid-svg-icons';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 // Estilos usando Styled Components
 const Heading = styled.h2`
-  font-family: sans-serif;
-  text-align: center;
-  margin-top: 10px;
-  font-weight: bold;
-  color: green;
+font-family: 'Roboto', sans-serif;
+font-size: 36px;
+text-align: center;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+font-weight: bold;
+color: green;
+border-bottom: 1px solid green;
+padding-bottom: 5px;
+padding-top: 5px;
+width: 300px; /* Adiciona a largura desejada */
+margin: 0 auto; /* Centraliza horizontalmente */
 `;
 
 const List = styled.ul`
@@ -51,6 +55,12 @@ const Button = styled.button`
   color:#fff
 }
 `;
+const Footer = styled.footer`
+  background-color: #cbe9cb;
+  color: #333;
+  text-align: center;
+  padding: 20px 0;
+`;
 
 const RightAlignedDiv = styled.div`
   display: flex;
@@ -59,6 +69,7 @@ const RightAlignedDiv = styled.div`
   margin-bottom: 10px;
   margin-right: 5%;
 `;
+
 
 const Services = () => {
   const [services, setServices] = useState([]);
@@ -99,7 +110,7 @@ const Services = () => {
       <Heading>Serviços</Heading>
         < RightAlignedDiv>
               <Button className="btn   me-2" onClick={() => handleCreate(services)}>
-                 <FontAwesomeIcon icon={faPlus} />
+                Novo Serviço +
               </Button>
         </RightAlignedDiv>
 

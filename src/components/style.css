@@ -39,6 +39,7 @@
   font-weight: bold;
   text-align: center;
   color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2)
  }
   .form-container {
     width: 400px;
@@ -87,6 +88,8 @@
     font-weight: bold;
     text-align: center;
     color: #228B22;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 5%;
   }
   .lblAvicos{
     font-size: 12px;

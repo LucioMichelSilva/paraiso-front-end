@@ -10,6 +10,7 @@ const Heading = styled.h2`
   margin-top: 10px;
   font-weight: bold;
   color: green;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 `;
 
 const FormContainer = styled.div`
