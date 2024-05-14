@@ -10,6 +10,7 @@ const Container = styled.h2`
   margin-top: 10px;
   font-weight: bold;
   color: green;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 `;
 
 const FormContainer = styled.div`
@@ -54,16 +55,29 @@ const AddClient = () => {
   const [error, setError] = useState('');
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData(prevState => ({
+      ...prevState,
+      [e.target.name]: e.target.value
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!formData.name || !formData.email) {
       setError('Por favor, preencha todos os campos.');
       return;
     }
+
+    const isValidEmail = (email) => {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    };
+  
+    // Verificar se o email é válido
+    if (!isValidEmail(formData.email)) {
+      setError('Por favor, insira um email válido.');
+      return;
+    }
+  
     try {
       await axios.post('http://localhost:3001/clients', formData);
       // Após a criação bem-sucedida, você pode redirecionar o usuário de volta para a página de serviços
@@ -71,7 +85,6 @@ const AddClient = () => {
     } catch (error) {
       console.error('Erro ao adicionar serviço:', error);
     }
-
   };
 
   return (

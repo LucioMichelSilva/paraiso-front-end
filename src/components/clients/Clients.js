@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faEye } from '@fortawesome/free-solid-svg-icons';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 // Estilos usando Styled Components
 const Heading = styled.h2`
-  font-family: sans-serif;
-  text-align: center;
-  margin-top: 10px;
-  font-weight: bold;
-  color: green;
+font-family: 'Roboto', sans-serif;
+font-size: 36px;
+text-align: center;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+font-weight: bold;
+color: green;
+border-bottom: 1px solid green;
+padding-bottom: 5px;
+padding-top: 5px;
+width: 300px; /* Adiciona a largura desejada */
+margin: 0 auto; /* Centraliza horizontalmente */
 `;
 
 const List = styled.ul`
@@ -57,6 +61,7 @@ const Button = styled.button`
 }
 `;
 
+
 const RightAlignedDiv = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -97,12 +102,12 @@ const Clients = () => {
 
   return (
     <div>
-      <Heading>Clientes</Heading>
-      <RightAlignedDiv>
-        <Button className="btn" onClick={() => handleCreate()}>
-          <FontAwesomeIcon icon={faPlus} color='#fff' />
-        </Button>
-      </RightAlignedDiv>
+     <Heading>Clientes</Heading>
+        <RightAlignedDiv>
+          <Button className="btn" onClick={() => handleCreate()}>
+          Novo Cliente +
+          </Button>
+        </RightAlignedDiv>
       <List>
         {clients.map(client => (
           <ListItem key={client.id}>
@@ -112,7 +117,7 @@ const Clients = () => {
                 {isValidEmail(client.email) ? client.email : 'E-mail inválido'}
               </p>
               {isValidEmail(client.email) && (
-                <Link to={`/clients/${client.id}/photos`} style={{color:'#006400',fontFamily:'sans-serif'}}>Ver Fotos</Link>
+                <Link to={`/clients/${client.id}/photos`} className={"sidebar-LINK2"}>Ver Fotos</Link>
               )}
             </div>
             <div>
@@ -123,6 +128,20 @@ const Clients = () => {
           </ListItem>
         ))}
       </List>
+      <style>
+        {`
+          .sidebar-LINK2 {
+            color: green;
+            font-weight: bold;
+            font-family: sans-serif;
+            transition: color 0.3s;
+          }
+
+          .sidebar-LINK2:hover {
+            color: #74d175; 
+          }
+        `}
+      </style>
     </div>
   );
 };

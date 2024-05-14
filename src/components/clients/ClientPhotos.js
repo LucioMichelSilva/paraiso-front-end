@@ -1,16 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
+import styled from 'styled-components';
+
+const Container = styled.div`
+
+margin-bottom: 39%; /* Valor padrão para dispositivos maiores */
+@media screen and (max-width: 768px) {
+  margin-bottom: 35%; /* Para dispositivos médios */
+}
+@media screen and (max-width: 480px) {
+  margin-bottom: 35%; /* Para dispositivos menores */
+}
+`;
+
+const Heading = styled.h1`
+  color: green;
+  font-size: 3.4375rem; /* Equivalente a 55px */
+  font-family: sans-serif;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid green;
+`;
 
 const ClientPhotos = () => {
   const [photoGroups, setPhotoGroups] = useState([]);
-  const [clientName, setClientName] = useState('');
   const { clientId } = useParams();
 
   useEffect(() => {
     if (clientId) {
       fetchPhotos(clientId);
-      fetchClientName(clientId);
     }
   }, [clientId]);
 
@@ -46,20 +65,11 @@ const ClientPhotos = () => {
     }
   };
 
-  const fetchClientName = async (clientId) => {
-    try {
-      const response = await axios.get(`http://localhost:3001/clients/${clientId}`);
-      setClientName(response.data.name);
-    } catch (error) {
-      console.error('Erro ao buscar nome do cliente:', error);
-    }
-  };
-
   return (
     <div className="container mt-4">
-      <div style={{ marginBottom: '23%' }}>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <h1 style={{ color: 'green', fontSize: '55px', fontFamily: 'sans-serif' }}>Fotos do Cliente {clientName && ` - ${clientName}`}</h1>
+       <Container>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '10px' }}>
+          <Heading>Fotos do Cliente</Heading>
         </div>
         <div className="row row-cols-1 row-cols-md-3 g-4">
           {photoGroups.map(group => (
@@ -83,7 +93,7 @@ const ClientPhotos = () => {
             </div>
           ))}
         </div>
-      </div>
+      </Container>
     </div>
   );
 };

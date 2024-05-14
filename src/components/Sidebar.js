@@ -16,17 +16,17 @@ const Sidebar = ({ onLogout }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light" style={{backgroundColor:'	#cbe9cb'}}>
     <div className="container-fluid">
-      <span className="navbar-brand mb-0 h1">Paraiso <FontAwesomeIcon icon={faLeaf} color='green' /></span>
+      <span className="navbar-brand mb-0 h1"> Paraiso <FontAwesomeIcon icon={faLeaf} color='green' /></span>
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <Link to="/" className="nav-link sidebar-link">Home</Link>
+            <Link to="/" className="nav-link sidebar-link" style={{textShadow:'2px 2px 4px rgba(0, 0, 0, 0.2)'}}>Home</Link>
           </li>
           <li className="nav-item">
-            <Link to="/services" className="nav-link sidebar-link">Serviços</Link>
+            <Link to="/services" className="nav-link sidebar-link"style={{textShadow:'2px 2px 4px rgba(0, 0, 0, 0.2)'}}>Serviços</Link>
           </li>
           <li className="nav-item">
-            <Link to="/clients" className="nav-link sidebar-link">Clientes</Link>
+            <Link to="/clients" className="nav-link sidebar-link" style={{textShadow:'2px 2px 4px rgba(0, 0, 0, 0.2)'}}>Clientes</Link>
           </li>
         </ul>
       </div>
