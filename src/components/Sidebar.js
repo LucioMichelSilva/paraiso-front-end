@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLeaf } from '@fortawesome/free-solid-svg-icons';
 import './style.css'
+import logo from '../logo.png'
 
 const Sidebar = ({ onLogout }) => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Sidebar = ({ onLogout }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light" style={{backgroundColor:'	#cbe9cb'}}>
     <div className="container-fluid">
-      <span className="navbar-brand mb-0 h1"> Paraiso <FontAwesomeIcon icon={faLeaf} color='green' /></span>
+    <img src={logo} alt="Logo" style={{ width: '7%', height: '5%', marginRight: '2%' }} />
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item">
@@ -44,6 +45,7 @@ const Sidebar = ({ onLogout }) => {
 
           .sidebar-link:hover {
             color: green; 
+            border-bottom: 1px solid green;
           }
         `}
       </style>

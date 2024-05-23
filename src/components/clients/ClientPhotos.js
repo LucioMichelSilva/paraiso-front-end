@@ -5,13 +5,6 @@ import styled from 'styled-components';
 
 const Container = styled.div`
 
-margin-bottom: 39%; /* Valor padrão para dispositivos maiores */
-@media screen and (max-width: 768px) {
-  margin-bottom: 35%; /* Para dispositivos médios */
-}
-@media screen and (max-width: 480px) {
-  margin-bottom: 35%; /* Para dispositivos menores */
-}
 `;
 
 const Heading = styled.h1`
@@ -66,33 +59,33 @@ const ClientPhotos = () => {
   };
 
   return (
-    <div className="container mt-4">
+    <div className="container " style={{height:'30%'}}>
        <Container>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '10px' }}>
-          <Heading>Fotos do Cliente</Heading>
-        </div>
-        <div className="row row-cols-1 row-cols-md-3 g-4">
-          {photoGroups.map(group => (
-            <div key={`${group.serviceId}_${group.createdAt}`} className="col">
-              <div className="card" >
-                <div className="card-header" style={{ backgroundColor: '#cbe9cb' }}>
-                  <h5 className="card-title text-center">{group.serviceName} - {group.createdAt}</h5>
-                </div>
-                <div className="card-body">
-                  <div className="row row-cols-1 row-cols-md-3 g-3">
-                    {group.photos.map(photo => (
-                      <div key={photo.id} className="col">
-                        <Link to={`/photos/${clientId}/${encodeURIComponent(photo.photoURL)}`}>
-                          <img src={photo.photoURL} alt="Foto do cliente" className="img-thumbnail img-thumbnail-lg" />
-                        </Link>
-                      </div>
-                    ))}
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '10px' }}>
+            <Heading>Fotos do Cliente</Heading>
+          </div>
+          <div className="row row-cols-1 row-cols-md-3 g-4">
+            {photoGroups.map(group => (
+              <div key={`${group.serviceId}_${group.createdAt}`} className="col">
+                <div className="card" >
+                  <div className="card-header" style={{ backgroundColor: '#cbe9cb' }}>
+                    <h5 className="card-title text-center">{group.serviceName} - {group.createdAt}</h5>
+                  </div>
+                  <div className="card-body">
+                    <div className="row row-cols-1 row-cols-md-3 g-3">
+                      {group.photos.map(photo => (
+                        <div key={photo.id} className="col">
+                          <Link to={`/photos/${clientId}/${encodeURIComponent(photo.photoURL)}`}>
+                            <img src={photo.photoURL} alt="Foto do cliente" className="img-thumbnail img-thumbnail-lg" />
+                          </Link>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
       </Container>
     </div>
   );
