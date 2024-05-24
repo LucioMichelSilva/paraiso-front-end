@@ -3,6 +3,7 @@ import axios from 'axios';
 import './style.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLeaf } from '@fortawesome/free-solid-svg-icons';
+import logoBranco from '../logoBranco.png'
 
 const Login = ({ setToken }) => {
   const [username, setUsername] = useState('');
@@ -31,10 +32,7 @@ const Login = ({ setToken }) => {
   return (
     <div className="container">
         <div className="container2">
-          <h1 className='lblParaiso'>Paraiso Jardinagem</h1>
-          <div className="leaf-icon-container">
-          <FontAwesomeIcon icon={faLeaf} className='leaf-icon'/>
-          </div>
+        <img src={logoBranco} alt="logoBranco" style={{ width: '110%', height: '50%' }} />
         </div>
      <div className="form-container">
       <h2 className='loginLBL'>Login</h2>
